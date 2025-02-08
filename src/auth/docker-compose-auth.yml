@@ -1,15 +1,23 @@
-version: '3.8'
-
 services:
   auth-db:
     extends:
       file: mysql.yml
       service: auth-db
+    volumes:
+      - auth_mysql_data:/var/lib/mysql 
 
   redis:
     extends:
       file: redis.yml
       service: redis
+    volumes:
+      - auth_redis_data:/data  
 
-env_file:
-  - ../.env
+volumes:
+  auth_mysql_data: 
+    name: auth_mysql_data
+    driver: local
+
+  auth_redis_data:
+    name: auth_redis_data
+    driver: local

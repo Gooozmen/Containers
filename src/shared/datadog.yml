@@ -4,10 +4,17 @@ services:
   datadog:
     image: gcr.io/datadoghq/agent:latest
     container_name: datadog
-    env_file:
-      - ../.env
+    restart: always
+
     environment:
-      DD_API_KEY: ${DD_API_KEY}
-      DD_SITE: ${DD_SITE}
+      DD_API_KEY: "${DD_API_KEY}"
+      DD_SITE: "${DD_SITE}"
     ports:
       - "8126:8126"
+    volumes:
+      - datadog_logs:/var/log/datadog
+
+volumes:
+  datadog_logs:
+    name: datadog_logs
+    driver: local

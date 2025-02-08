@@ -1,15 +1,26 @@
-#add scoped docker compose file path in the next pwsh object
-$containers = [PSCustomObject]@{
-    auth = "../src/auth/docker-compose-auth.yml"
-    shared = "../src/shared/docker-compose-shared.yml"
+$auth = [PSCustomObject]@{
+    compose = "docker-compose-auth.yml"
+    base = resolve-path ("../src/auth/")
 }
 
-#set up
+$shared = [PSCustomObject]@{
+    compose = "docker-compose-shared.yml"
+    base = resolve-path ("../src/shared/")
+}
 
-    #auth
-docker-compose -f $containers.auth up -d
+$settings = [PSCustomObject]@{
+    env = resolve-path ("../src/.env")
+    buildPath = get-Location 
+}
 
-    #shared
-docker-compose -f $containers.shared up -d
 
+#auth
+Set-Location -Path $auth.base
+docker-compose --env-file $settings.env -f $auth.compose up -d
 
+#shared
+Set-Location -Path $shared.base
+docker-compose --env-file $settings.env -f $shared.compose up -d
+
+#start
+Set-Location -Path $settings.build
