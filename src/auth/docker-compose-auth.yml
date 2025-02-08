@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  auth-db:
+    extends:
+      file: mysql.yml
+      service: auth-db
+
+  redis:
+    extends:
+      file: redis.yml
+      service: redis
+
+env_file:
+  - ../.env

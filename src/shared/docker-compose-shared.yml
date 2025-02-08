@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  datadog:
+    extends:
+      file: datadog.yml
+      service: datadog
+
+env_file:
+  - ../.env
