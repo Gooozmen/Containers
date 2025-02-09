@@ -1,5 +1,5 @@
 $containers = @("auth-db", "redis", "datadog")
-$volumes = @("auth_mysql_data", "auth_redis_data", "datadog_logs")
+$volumes = @("auth_postgres_data", "auth_redis_data", "datadog_logs")
 
 Write-Host "Cleaning up Auth Service infrastructure resources..." -ForegroundColor Cyan
 
@@ -19,4 +19,4 @@ foreach ($volume in $volumes) {
 Write-Host "Cleaning up unused networks..." -ForegroundColor Yellow
 docker network prune -f
 
-Write-Host "Cleanup completed! Datadog, Redis, and MySQL resources have been removed." -ForegroundColor Green
+Write-Host "Cleanup completed! Datadog, Redis, and sql resources have been removed." -ForegroundColor Green

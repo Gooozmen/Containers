@@ -8,4 +8,9 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - auth_redis_data:/data  
+      - auth_redis_data:/data 
+
+volumes:
+  auth_redis_data:
+    name: auth_redis_data
+    driver: local

@@ -1,26 +1,20 @@
-$auth = [PSCustomObject]@{
-    compose = "docker-compose-auth.yml"
-    base = resolve-path ("../src/auth/")
-}
-
-$shared = [PSCustomObject]@{
-    compose = "docker-compose-shared.yml"
-    base = resolve-path ("../src/shared/")
+$projects = [PSCustomObject]@{
+    auth = resolve-path ("../src/auth/")
+    shared = resolve-path ("../src/shared/")
 }
 
 $settings = [PSCustomObject]@{
     env = resolve-path ("../src/.env")
-    buildPath = get-Location 
+    compose = "docker-compose.yml"
 }
-
-
+$buildPath = get-Location 
 #auth
-Set-Location -Path $auth.base
-docker-compose --env-file $settings.env -f $auth.compose up -d
+Set-Location -Path $projects.auth
+docker-compose --env-file $settings.env up -d
 
 #shared
-Set-Location -Path $shared.base
-docker-compose --env-file $settings.env -f $shared.compose up -d
+Set-Location -Path $projects.shared
+docker-compose --env-file $settings.env up -d
 
 #start
-Set-Location -Path $settings.build
+Set-Location $buildPath

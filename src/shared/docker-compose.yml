@@ -5,6 +5,6 @@ services:
       service: datadog
 
 volumes:
-  datadog_logs: 
+  datadog_logs:  # ✅ Explicitly defining volume for Datadog (if needed)
     name: datadog_logs
     driver: local
