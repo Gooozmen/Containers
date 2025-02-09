@@ -14,8 +14,6 @@ containers/
 │── build/
 │   ├── clean-all.ps1    # Script to remove all containers and volumes
 │   ├── execute-all.ps1  # Script to create and start all containers
-│── doc/      
-|   ├── readme.md         # Documentation files
 │── src/
 │   ├── auth/            # Authentication service infrastructure
 │   │   ├── docker-compose.yml
@@ -26,6 +24,7 @@ containers/
 │   │   ├── docker-compose.yml
 │── .env                 # Environment configuration file
 │── .gitignore           # Git ignore file
+├── README.md            # Documentation files
 ```
 
 ## Setup Instructions
