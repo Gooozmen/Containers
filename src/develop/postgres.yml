@@ -12,9 +12,9 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - auth_postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  auth_postgres_data:
-    name: auth_postgres_data
+  postgres_data:
+    name: postgres_data
     driver: local
