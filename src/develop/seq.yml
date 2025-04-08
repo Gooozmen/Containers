@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  seq:
+    image: datalust/seq:latest
+    container_name: seq
+    restart: always
+    ports:
+      - "5341:80"      # HTTP (UI/API)
+      - "5342:5341"    # Ingestion port for Serilog
+    environment:
+      - ACCEPT_EULA=Y
+    volumes:
+      - seq_data:/data
+    networks:
+      - elk
+
+volumes:
+  seq_data:
+    name: seq_data
+    driver: local

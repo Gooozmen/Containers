@@ -19,6 +19,12 @@ services:
       file: kibana.yml
       service: kibana
 
+  seq:
+    extends:
+      file: seq.yml
+      service: seq
+
+
 volumes:
   postgres_data:
     name: postgres_data
@@ -31,6 +37,11 @@ volumes:
   elastic_data:
     name: elastic_data
     driver: local
+
+  seq_data:
+    name: seq_data
+    driver: local
+
 
 networks:
   elk:
