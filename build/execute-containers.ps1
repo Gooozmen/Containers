@@ -1,9 +1,9 @@
 $projects = [PSCustomObject]@{
-    src = resolve-path ("../src/develop")
+    src = resolve-path ("../src/containers/develop")
 }
 
 $settings = [PSCustomObject]@{
-    env = resolve-path ("../src/.env")
+    env = resolve-path ("../src/containers/develop/.env")
     compose = "docker-compose.yml"
 }
 
