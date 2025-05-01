@@ -4,46 +4,49 @@ services:
       file: postgres.yml
       service: auth-db
 
-  redis:
-    extends:
-      file: redis.yml
-      service: redis
-
-  elasticsearch:
-    extends:
-      file: elasticsearch.yml
-      service: elasticsearch
-
-  kibana:
-    extends:
-      file: kibana.yml
-      service: kibana
-
   seq:
     extends:
       file: seq.yml
       service: seq
 
-
 volumes:
   postgres_data:
     name: postgres_data
     driver: local
-
-  redis_data:
-    name: redis_data
-    driver: local
-
-  elastic_data:
-    name: elastic_data
-    driver: local
-
   seq_data:
     name: seq_data
     driver: local
 
-
 networks:
-  elk:
-    name: elk
+  dev-net:
+    name: dev-net
     driver: bridge
+
+
+  # redis:
+  #   extends:
+  #     file: redis.yml
+  #     service: redis
+
+  # elasticsearch:
+  #   extends:
+  #     file: elasticsearch.yml
+  #     service: elasticsearch
+
+  #kibana:
+    # extends:
+    #   file: kibana.yml
+    #   service: kibana
+
+  # redis_data:
+  #   name: redis_data
+  #   driver: local
+
+  # elastic_data:
+  #   name: elastic_data
+  #   driver: local
+
+# networks:
+#   elk:
+#     name: elk
+#     driver: bridge

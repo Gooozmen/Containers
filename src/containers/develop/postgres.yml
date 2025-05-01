@@ -18,3 +18,8 @@ volumes:
   postgres_data:
     name: postgres_data
     driver: local
+
+networks:
+  dev-net:
+    name: dev-net
+    driver: bridge
