@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   seq:
     image: datalust/seq:latest
@@ -12,7 +11,7 @@ services:
     volumes:
       - seq_data:/data
     networks:
-      - elk
+      - dev-net
 
 volumes:
   seq_data:
