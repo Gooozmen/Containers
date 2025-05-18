@@ -12,13 +12,3 @@ services:
       - seq_data:/data
     networks:
       - dev-net
-
-volumes:
-  seq_data:
-    name: seq_data
-    driver: local
-
-networks:
-  dev-net:
-    name: dev-net
-    driver: bridge
