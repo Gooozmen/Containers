@@ -1,0 +1,25 @@
+services:
+  elasticsearch:
+    extends:
+      file: elasticsearch.yml
+      service: elasticsearch
+
+  kibana:
+    extends:
+      file: kibana.yml
+      service: kibana
+
+  logstash:
+    extends:
+      file: logstash.yml
+      service: logstash
+
+volumes:
+  elastic_data:
+    name: elastic_data
+    driver: local
+
+networks:
+  azure-net:
+    name: azure-net
+    driver: bridge
